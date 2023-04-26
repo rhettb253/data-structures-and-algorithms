@@ -72,6 +72,11 @@ const notInFirstArray = (forbiddenValues, arr) => {
   return newArr;
 };
 
+// return arr.filter(value => {
+//    return !forbiddenValues.includes(value);
+// })
+// this also works^
+
 
 
 /* ------------------------------------------------------------------------------------------------
@@ -191,7 +196,7 @@ For example: evenOddNumericValues(['Gregor', 2, 4, 1]) returns ['even', 'even', 
 ------------------------------------------------------------------------------------------------ */
 
 const evenOddNumericValues = (arr) => {
-  // Solution code here...
+  return arr.filter(el => typeof(el === 'number')).map(num => num % 2 === 0 ? 'even' : 'odd');
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -301,7 +306,7 @@ xdescribe('Testing challenge 8', () => {
   });
 });
 
-xdescribe('Testing challenge 9', () => {
+describe('Testing challenge 9', () => {
   test('It should remove non-integers and return "even" or "odd', () => {
     expect(evenOddNumericValues(['Gregor', 2, 4, 1])).toStrictEqual(['even', 'even', 'odd']);
     expect(evenOddNumericValues(['Gregor', 2, 4, 1]).length).toStrictEqual(3);
