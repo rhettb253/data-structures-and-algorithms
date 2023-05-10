@@ -128,7 +128,9 @@ Write a function named citiesAtoJ that takes in an array of city names and uses 
 ------------------------------------------------------------------------------------------------ */
 
 const citiesAtoJ = (arr) => {
-
+  const pattern = /^[A-J]/; // regular expression to match first letter A to J
+  const filteredArray = arr.filter(city => pattern.test(city));
+  return filteredArray;
 };
 
 /* ------------------------------------------------------------------------------------------------
