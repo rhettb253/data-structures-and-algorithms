@@ -11,8 +11,9 @@ Write a function named screenForNames that takes in an array of strings and uses
 ------------------------------------------------------------------------------------------------ */
 
 const screenForNames = (arr) => {
-  // Solution code here...
-}
+  const regex = /^(Mr\.|Mrs\.|Ms\.|Dr\.)\s[A-Za-z]+$/;
+  return arr.filter((name) => regex.test(name));
+};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -99,7 +100,8 @@ let starWarsData = [{
 }];
 
 let biggerThanLuke = (arr) => {
-  // Solution code here...
+  let newArr = arr.filter(charObj => Number(charObj.mass) > 77 ? true : false).map(filteredObjs => filteredObjs.name).join(' - ');
+  return newArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -117,7 +119,13 @@ This data could be sorted by name or price.
 ------------------------------------------------------------------------------------------------ */
 
 const sortBy = (property, arr) => {
-  
+  return arr.sort((a, b) => {
+    if (typeof a[property] === "number") {
+      return a[property] - b[property];
+    } else {
+      return a[property].charCodeAt(0) - b[property].charCodeAt(0);
+    }
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -133,7 +141,8 @@ https://secure.com returns true because the URL is secure
 https:/missingslash.org returns false because the URL is malformed
 ------------------------------------------------------------------------------------------------ */
 const isSecure = (url) => {
-  // Solution code here...
+  const regex = /^https:\/\/[\w.-]+\.[a-zA-Z]{2,}$/;
+  return regex.test(url);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -154,11 +163,31 @@ Here is a sample board:
   ['X', 'O', 'X'],
 ];
 ------------------------------------------------------------------------------------------------ */
+function detectTicTacToeWin(board) {
+  // Helper function to check if three coordinates have the same value
+  function helpCheck(row1, col1, row2, col2, row3, col3) {
+    const value = board[row1][col1];
+    return value !== '' && value === board[row2][col2] && value === board[row3][col3];
+  }
+  // Check rows
+  for (let row = 0; row < 3; row++) {
+    if (helpCheck(row, 0, row, 1, row, 2)) {
+      return true;
+    }
+  }
+  // Check columns
+  for (let col = 0; col < 3; col++) {
+    if (helpCheck(0, col, 1, col, 2, col)) {
+      return true;
+    }
+  }
+  // Check diagonals
+  if (helpCheck(0, 0, 1, 1, 2, 2) || helpCheck(0, 2, 1, 1, 2, 0)) {
+    return true;
+  }
 
-const detectTicTacToeWin = (board) => {
-  // Solution code here...
-};
-
+  return false;
+}
 /* ------------------------------------------------------------------------------------------------
 TESTS
 
