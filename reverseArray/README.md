@@ -1,7 +1,7 @@
 # Array Reverse Function
 
 ## Whiteboard Process
-<img src='./reverseArrayWhiteboard.png'>
+<img src='./reverseArrayWB.png'>
 
 ## Approach & Efficiency
 <!-- What approach did you take? Why? What is the Big O space/time for this approach? -->
