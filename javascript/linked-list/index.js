@@ -13,17 +13,6 @@ class LinkedList {
     this.head = head;
   }
 
-  //adds Node
-  insert(value) {
-    if(!this.head) this.head = new Node(value);
-    //otherwise
-    const newNode = new Node(value);
-    // console.log(newNode);
-    newNode.next = this.head;
-    this.head = newNode;
-    console.log(this.head)
-  }
-
   traversal() {
     let current = this.head;
     while (current) {
@@ -32,14 +21,25 @@ class LinkedList {
   }
 
   altTraversal() {
-    /// return the last node of the list or something... count them??
+    /// return the last node of the list
     let current = this.head;
     if (!current) return;
-    while (current?.next) {
+    while (current.next) {
       // conditional chaining
       current = current.next;
     }
     return current;
+  }
+
+  //adds Node
+  insert(value) {
+    if(!this.head) this.head = new Node(value);
+    //otherwise
+    const newNode = new Node(value);
+    // console.log(newNode);
+    newNode.next = this.head;
+    this.head = newNode;
+    // console.log(this.head);
   }
 
   //indicates w/ boolean whether value exists elsewhere in list
@@ -56,7 +56,7 @@ class LinkedList {
   toString(){
     // if (!this.head) return 'NULL';
     let current = this.head;
-    let returnStr = "";
+    let returnStr = '';
     while (current) {
       // look at the node.value "{ a } -> "
       returnStr += `{ ${current.value} } -> `;
@@ -65,6 +65,45 @@ class LinkedList {
     // once we exit the loop we need to tack NULL on to the end
     returnStr += 'NULL';
     return returnStr;
+  }
+
+  //adds a new node with the given value to the end of the list
+  append(newVal){
+    let current = this.head;
+    while (current.next) {
+      current = current.next;
+    }
+    current.next = new Node(newVal);
+  }
+
+  //adds a new node with the given new value immediately before the first node that has the value specified
+  insertBefore(val, newVal){
+    if (!this.head) {this.head = new Node(newVal);} //optional, for saftey, could be on insert after too
+    let current = this.head;
+    if (current.value === val) {
+      this.head = new Node(newVal, current);
+    }
+    while (current.next) {
+      if (current.next.value === val) {
+        let temp = current.next;
+        current.next = new Node(newVal, temp);
+        return;
+      }
+      current = current.next;
+    }
+  }
+
+  //adds a new node with the given new value immediately after the first node that has the value specified
+  insertAfter(val, newVal){
+    let current = this.head;
+    while (current) {
+      if (current.value === val) {
+        let temp = current.next;
+        current.next = new Node(newVal, temp);
+        return;
+      }
+      current = current.next;
+    }
   }
 }
 
