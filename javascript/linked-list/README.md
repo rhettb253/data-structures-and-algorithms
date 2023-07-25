@@ -3,7 +3,7 @@ Linked List Challenge
 
 ## LinkedList Method WB
 
-<img src='LLmethods.png'>
+<img src='llmethods.png'>
 
 ## Test
 npm test linked-list.test.js
