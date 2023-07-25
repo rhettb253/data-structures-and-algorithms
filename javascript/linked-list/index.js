@@ -1,15 +1,15 @@
-'use strict';
+"use strict";
 
 //will create obj {value:given, next:given}
 class Node {
-  constructor(value, next=null){
+  constructor(value, next = null) {
     this.value = value;
     this.next = next;
   }
 }
 
 class LinkedList {
-  constructor(head=null){
+  constructor(head = null) {
     this.head = head;
   }
 
@@ -33,7 +33,7 @@ class LinkedList {
 
   //adds Node
   insert(value) {
-    if(!this.head) this.head = new Node(value);
+    if (!this.head) this.head = new Node(value);
     //otherwise
     const newNode = new Node(value);
     // console.log(newNode);
@@ -43,32 +43,32 @@ class LinkedList {
   }
 
   //indicates w/ boolean whether value exists elsewhere in list
-  includes(value){
+  includes(value) {
     let current = this.head;
     while (current) {
-      if(current.value === value) return true;
+      if (current.value === value) return true;
       current = current.next;
     }
     return false;
   }
 
   //string with all LL values
-  toString(){
+  toString() {
     // if (!this.head) return 'NULL';
     let current = this.head;
-    let returnStr = '';
+    let returnStr = "";
     while (current) {
       // look at the node.value "{ a } -> "
       returnStr += `{ ${current.value} } -> `;
       current = current.next;
     }
     // once we exit the loop we need to tack NULL on to the end
-    returnStr += 'NULL';
+    returnStr += "NULL";
     return returnStr;
   }
 
   //adds a new node with the given value to the end of the list
-  append(newVal){
+  append(newVal) {
     let current = this.head;
     while (current.next) {
       current = current.next;
@@ -77,8 +77,10 @@ class LinkedList {
   }
 
   //adds a new node with the given new value immediately before the first node that has the value specified
-  insertBefore(val, newVal){
-    if (!this.head) {this.head = new Node(newVal);} //optional, for saftey, could be on insert after too
+  insertBefore(val, newVal) {
+    if (!this.head) {
+      this.head = new Node(newVal);
+    } //optional, for saftey, could be on insert after too
     let current = this.head;
     if (current.value === val) {
       this.head = new Node(newVal, current);
@@ -94,7 +96,7 @@ class LinkedList {
   }
 
   //adds a new node with the given new value immediately after the first node that has the value specified
-  insertAfter(val, newVal){
+  insertAfter(val, newVal) {
     let current = this.head;
     while (current) {
       if (current.value === val) {
@@ -105,6 +107,29 @@ class LinkedList {
       current = current.next;
     }
   }
+
+  //return the node’s value that is k places from the tail of the linked list.
+  kthFromEnd(k) {
+    if (!this.head) console.error('Error, empty list');
+    if (k < 0){return console.error('Error, no negative parameter values');}
+    let current = this.head;
+    //see how many nodes are in our LL
+    let tally = 0;
+    while (current.next) {
+      tally++;
+      current = current.next;
+    }
+    //restart at beggining and move through
+    let move = tally - k;
+    if (move < 0){console.error('Error, list not long enough for parameter');} //throw new Error('Error, list not long enough for parameter');
+    let i = 0;
+    current = this.head;
+    while (i < move) {
+      current = current.next;
+      i++;
+    }
+    return current.value;
+  }
 }
 
-module.exports = {LinkedList, Node};
+module.exports = { LinkedList, Node };

@@ -16,6 +16,11 @@ const dummyLL = {
   },
 };
 
+const dummyLL2 = {
+  value: 'a',
+  next: null
+};
+
 describe('linked list test suite', () => {
   test('toString method returns the node values in the right format', () => {
     const testLL = new LinkedList(dummyLL);
@@ -62,6 +67,30 @@ describe('linked list test suite', () => {
     const testLL = new LinkedList(dummyLL);
     testLL.insertAfter('f', 'last');
     expect(testLL.toString()).toBe('{ a } -> { 1 } -> { b } -> { c } -> { 2 } -> { d } -> { e } -> { f } -> { last } -> NULL');
+  });
+  test('k is somewhere in the middle of the linked list', () => {
+    const testLL = new LinkedList(dummyLL);
+    expect(testLL.kthFromEnd(4)).toBe('2');
+  });
+  test('k errors when it is greater than the linked list length', () => {
+    const testLL = new LinkedList(dummyLL);
+    const consoleSpy = jest.spyOn(console, 'error');
+    testLL.kthFromEnd(40);
+    expect(consoleSpy).toBeCalledWith('Error, list not long enough for parameter');
+  });
+  test('k and the linked list length are the same', () => {
+    const testLL = new LinkedList(dummyLL);
+    expect(testLL.kthFromEnd(9)).toBe('a');
+  });
+  test('method errors out when k is less than 0', () => {
+    const testLL = new LinkedList(dummyLL);
+    const consoleSpy = jest.spyOn(console, 'error');
+    testLL.kthFromEnd(-4);
+    expect(consoleSpy).toBeCalledWith('Error, no negative parameter values');
+  });
+  test('method errors out when k is less than 0', () => {
+    const testLL = new LinkedList(dummyLL2);
+    expect(testLL.kthFromEnd(0)).toBe('a');
   });
 });
 
