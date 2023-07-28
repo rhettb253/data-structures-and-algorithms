@@ -1,8 +1,5 @@
 'use strict';
 
-// Require our linked list implementation
-'use strict';
-
 const { LinkedList } = require('../index.js');
 // '{ a } -> { b } -> { c } -> NULL'
 const dummyLL = {

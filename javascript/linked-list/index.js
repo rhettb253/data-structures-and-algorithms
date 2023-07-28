@@ -54,11 +54,15 @@ class LinkedList {
 
   //string with all LL values
   toString() {
-    // if (!this.head) return 'NULL';
+    if (!this.head) return 'NULL';
     let current = this.head;
     let returnStr = "";
     while (current) {
       // look at the node.value "{ a } -> "
+      if (current.value === undefined) {
+        current = current.next;
+        continue;
+      }
       returnStr += `{ ${current.value} } -> `;
       current = current.next;
     }
