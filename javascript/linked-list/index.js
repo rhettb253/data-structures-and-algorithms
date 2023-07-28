@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 //will create obj {value:given, next:given}
 class Node {
