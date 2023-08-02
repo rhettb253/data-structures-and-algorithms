@@ -20,7 +20,7 @@ class Stack {
 
   //removes and returns the node from the top of the stack
   pop(){
-    this.isEmpty() && new Error('cannot remove a node from an empty list');
+    if (this.isEmpty()) {throw new Error('cannot remove a node from an empty stack');}
     let temp = this.top;
     this.top = temp.next;
     return temp.value;
@@ -28,6 +28,7 @@ class Stack {
 
   //returns the value of the node located at the top of the stack
   peek(){
+    if (this.isEmpty()) {throw new Error('there are no nodes in this stack');}
     return this.top.value;
   }
 
@@ -37,27 +38,36 @@ class Stack {
 }
 
 class Queue {
-  constructor(front = null, rear = null){
-    this.front = front;
-    this.rear = rear;
+  constructor(node = null){
+    this.front = node;
+    this.rear = node;
   }
 
   //adds a new node with that value to the back of the queue
   enqueue(value){
-
+    let newNode = new Node(value, null);
+    this.rear.next = newNode;
+    this.rear = newNode;
   }
 
   //removes and returns the node from the front of the queue
   dequeue(){
-
+    if (this.isEmpty()) {throw new Error('cannot remove a node from an empty queue');}
+    let temp = this.front;
+    this.front = temp.next;
+    if (this.front === null) {this.rear = null;}
+    return temp;
   }
 
   //returns the value of the node located at the front of the queue
   peek(){
-
+    if (this.isEmpty()) {throw new Error('there are no nodes in this queue');}
+    return this.front.value;
   }
 
   isEmpty(){
-
+    return this.front ? false : true;
   }
 }
+
+module.exports = {Node, Stack, Queue};
