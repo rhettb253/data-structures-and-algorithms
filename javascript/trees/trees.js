@@ -1,7 +1,7 @@
-'use strict';
+"use strict";
 
 class BTNode {
-  constructor(value, left = null, right = null){
+  constructor(value, left = null, right = null) {
     this.value = value;
     this.left = left;
     this.right = right;
@@ -65,28 +65,41 @@ class BinaryTree {
   }
 }
 
-// class BinarySearchTree {
-//   constructor(){
+class BinarySearchTree extends BinaryTree {
+  add(value, startNode = this.root) {
+    let newNode = new BTNode(value);
+    // if there is no root/ no nodes on tree
+    if (!this.root) {
+      this.root = newNode;
+      return;
+    }
 
-//   }
+    // if the value to add is equivalent to another then exit because BSTrees only accept unique values
+    if (value === startNode.value) return;
 
-//   insert(value){
-//     let newNode = new BTNode(value);
-//     if (!this.root){ this.root = newNode; return; }
+    // if value is less than node
+    if (value < startNode.value) {
+      if (startNode.left) this.add(value, startNode.left);
+      else {
+        startNode.left = newNode;
+        return;
+      }
+    }
 
-//     let _insert = (node) => {
-//       if (!node.left) {node.left = newNode;}
-//       if (newNode.value < node.value) {
-//         node.left = newNode;
-//       }
-//       if (value > node.value) {
+    // if value is greater than node
+    if (value > startNode.value) {
+      if (startNode.right) this.add(value, startNode.right);
+      else {
+        startNode.right = newNode;
+        return;
+      }
+    }
+  }
 
-//       }
+  contains(value) {
+    let nodeValues = this.preOrder(this.root);
+    return nodeValues.includes(value);
+  }
+}
 
-//     }
-
-//     _insert(this.root);
-//   }
-// }
-
-module.exports = {BinaryTree, BTNode};
+module.exports = { BinarySearchTree, BinaryTree, BTNode };
