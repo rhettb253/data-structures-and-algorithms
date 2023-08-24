@@ -75,4 +75,10 @@ describe('binary trees', ()=> {
     expect(biSearchTree.contains(3)).toBe(true);
     expect(biSearchTree.contains(100)).toBe(false);
   });
+  test('getMax method works', ()=> {
+    let biSearchTree = new BinarySearchTree(10);
+    biSearchTree.root.left = {value: 5, left: {value: 3, left: null, right: null}, right: {value: 7, left: null, right: null}};
+    biSearchTree.root.right = {value: 15, left: null, right: {value: 17, left: null, right: null}};
+    expect(biSearchTree.getMax()).toEqual(17);
+  });
 });

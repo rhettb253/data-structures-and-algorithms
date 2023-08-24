@@ -63,6 +63,12 @@ class BinaryTree {
     nodeArray.push(node.value);
     return nodeArray;
   }
+
+  getMax() {
+    let nodeValues = this.preOrder(this.root);
+    nodeValues.sort((a, b) => b - a);
+    return nodeValues[0];
+  }
 }
 
 class BinarySearchTree extends BinaryTree {
