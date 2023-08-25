@@ -2,16 +2,19 @@
 
 ## Methods
 
-- traversal
+### traversal
   - preOrder
   - inOrder
   - postOrder
 
-- adding nodes
+### adding nodes
   - insert
 
-- verifing values
+### verifing values
   - contains
+
+### return highest value
+  - getMax
 
 ## Clean & Professional Traversal Methods UML
 
@@ -20,3 +23,7 @@
 ## Add Method UML (w/o helpful colors 🥲)
 
 <img src='./addmeth.png'>
+
+## getMax Method UML
+
+<img src='./getMaxMeth.png'>
