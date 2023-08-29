@@ -64,11 +64,30 @@ class BinaryTree {
     return nodeArray;
   }
 
-  getMax() {
-    let nodeValues = this.preOrder(this.root);
-    nodeValues.sort((a, b) => b - a);
-    return nodeValues[0];
+  getMax(node = this.root) {
+    if (!node) {
+      return null; // Handle the case when the tree is empty
+    }
+
+    // Base case: If this is a leaf node (no left or right children), return its value
+    if (!node.left && !node.right) {
+      return node.value;
+    }
+
+    // Find the maximum value in the left and right subtrees recursively
+    const leftMax = this.getMax(node.left);
+    const rightMax = this.getMax(node.right);
+
+    // Compare the maximum values in the left and right subtrees with the current node's value
+    // and return the maximum of the three values
+    return Math.max(node.value, leftMax, rightMax);
   }
+
+  // getMax() {
+  //   let nodeValues = this.preOrder(this.root);
+  //   nodeValues.sort((a, b) => b - a);
+  //   return nodeValues[0];
+  // }
 }
 
 class BinarySearchTree extends BinaryTree {

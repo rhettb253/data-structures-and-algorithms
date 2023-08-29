@@ -16,11 +16,7 @@
 ### return highest value
   - getMax
 
-## Clean & Professional Traversal Methods UML
-
-<img src='./treetrav.png'>
-
-## Add Method UML (w/o helpful colors 🥲)
+## add Method UML
 
 <img src='./addmeth.png'>
 

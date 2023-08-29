@@ -46,8 +46,12 @@ class Queue {
   //adds a new node with that value to the back of the queue
   enqueue(value){
     let newNode = new Node(value, null);
-    this.rear.next = newNode;
-    this.rear = newNode;
+    if (!this.front) this.front = newNode;
+    if (!this.rear) this.rear = newNode;
+    if (this.rear) {
+      this.rear.next = newNode;
+      this.rear = this.rear.next;
+    }
   }
 
   //removes and returns the node from the front of the queue
@@ -55,7 +59,7 @@ class Queue {
     if (this.isEmpty()) {throw new Error('cannot remove a node from an empty queue');}
     let temp = this.front;
     this.front = temp.next;
-    if (this.front === null) {this.rear = null;}
+    if (this.front === null) this.rear = null;
     return temp;
   }
 
