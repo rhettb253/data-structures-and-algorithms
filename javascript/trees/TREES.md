@@ -6,7 +6,6 @@
   - preOrder
   - inOrder
   - postOrder
-  - breadthFirst
 
 ### adding nodes
   - insert
@@ -16,10 +15,6 @@
 
 ### return highest value
   - getMax
-
-## breadthFirst WB
-
-<img src=''>
 
 ## add Method UML
 
