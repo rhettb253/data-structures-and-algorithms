@@ -2,3 +2,4 @@
 
 ## Whiteboard
 
+<img src='./breadthFirstWB.png'/>
