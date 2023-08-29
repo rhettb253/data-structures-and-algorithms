@@ -6,6 +6,7 @@
   - preOrder
   - inOrder
   - postOrder
+  - breadthFirst
 
 ### adding nodes
   - insert
@@ -16,11 +17,11 @@
 ### return highest value
   - getMax
 
-## Clean & Professional Traversal Methods UML
+## breadthFirst WB
 
-<img src='./treetrav.png'>
+<img src=''>
 
-## Add Method UML (w/o helpful colors 🥲)
+## add Method UML
 
 <img src='./addmeth.png'>
 
