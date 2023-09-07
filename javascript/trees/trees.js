@@ -127,4 +127,35 @@ class BinarySearchTree extends BinaryTree {
   }
 }
 
-module.exports = { BinarySearchTree, BinaryTree, BTNode };
+class KAryNode {
+  constructor(value, children = []) {
+    this.value = value;
+    this.children = children;
+  }
+}
+
+class KAryTree {
+  constructor(rootValue = null, rootChildren = []) {
+    this.root = new KAryNode(rootValue, rootChildren);
+  }
+
+  traversal() {
+    let current = this.root;
+    let funQueue = [];
+    if (current) {
+      funQueue.unshift(current);
+    }
+    while (funQueue.length) {
+      let dequeuedNode = funQueue.pop();
+      dequeuedNode.children.forEach(child => funQueue.unshift(child));
+    }
+  }
+}
+
+module.exports = {
+  BinarySearchTree,
+  BinaryTree,
+  BTNode,
+  KAryNode,
+  KAryTree
+};
