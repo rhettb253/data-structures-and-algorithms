@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "jest": "^29.7.0"
+  },
+  "name": "insertion",
+  "description": "Insertion sort is a simple and efficient comparison-based sorting algorithm used to arrange a list of elements in ascending or descending order. It works by dividing the input list into two parts: a sorted subarray and an unsorted subarray. Initially, the sorted subarray contains only the first element of the input list, and the unsorted subarray contains the remaining elements.",
+  "version": "1.0.0",
+  "main": "insertionsort.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "jest --verbose --coverage"
+  },
+  "author": "",
+  "license": "ISC"
+}
