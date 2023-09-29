@@ -12,4 +12,87 @@ Here's a few bullet points of how merge sort works:
 
 The key idea behind merge sort is that it is relatively easy to merge two sorted lists into one sorted list. This "divide and conquer" approach allows merge sort to achieve its efficient time complexity. However, it does require additional memory to store the sub-lists during the sorting process. This additional memory usage is sometimes a consideration when choosing a sorting algorithm. However in today's world, memory typically isn't the issue.
 
+Here are my functions I use to complete amerge sort to create ordered arrays in ascending order:
+
+function mergeSort(arr) {
+
+  let n = arr.length;
+
+  // Base case: if the array has 0 or 1 element, it's already sorted.
+
+  if (n <= 1) {
+    return arr;
+  }
+
+  let mid = Math.floor(n / 2);
+
+  let left = arr.slice(0, mid);
+
+  let right = arr.slice(mid);
+
+  // Recursively sort both halves.
+
+  left = mergeSort(left);
+
+  right = mergeSort(right);
+
+  // Merge the sorted halves.
+
+  return merge(left, right);
+}
+
+function merge(left, right) {
+
+  let result = [];
+
+  let i = 0;
+
+  let j = 0;
+
+  while (i < left.length && j < right.length) {
+
+    if (left[i] <= right[j]) {
+
+      result.push(left[i]);
+
+      i++;
+
+    } else {
+
+      result.push(right[j]);
+
+      j++;
+
+    }
+  }
+
+  // Add any remaining elements from both arrays.
+
+  while (i < left.length) {
+
+    result.push(left[i]);
+
+    i++;
+
+  }
+
+  while (j < right.length) {
+
+    result.push(right[j]);
+
+    j++;
+
+  }
+
+  return result;
+}
+
+Below is a visual step through for how the first 'branch' of recursion works:
+
+![stepThrough](mergesort.png)
+
+This would reform the left array from step one, and then we could remake this diagram for the 'right' array in step one. Ultimately reforming the entire arr variable from step one in ascending order.
+
+I hope this was helpful!
+
 Cheers!
