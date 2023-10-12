@@ -54,5 +54,6 @@ class HashTable {
     if (this.keys[key]) return this.keys[key];
     else return 'No matching key';
   }
+
 }
 module.exports = HashTable;
