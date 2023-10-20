@@ -29,3 +29,7 @@ treeTwo: The second binary tree.
 
 #### Returns
 Returns an array of common values found in both binary trees.
+
+## UML
+
+![uml](treeintersectionuml.png)
