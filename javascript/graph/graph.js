@@ -31,6 +31,7 @@ class Graph {
     let edges = this.adjacencyList.get(start);
     const newEdge = new Edge(start, end, weight);
     edges.push(newEdge);
+    return newEdge;
   }
 
   addUndirectedEdge(start, end, weight){
@@ -48,7 +49,7 @@ class Graph {
     if (!vertex) return;
     const edges = this.getEdges(vertex);
     if (edges){
-      return edges.map(edge => edge.to);
+      return edges.map(edge => edge.end);
     } else null;
   }
 
@@ -58,6 +59,10 @@ class Graph {
 
   size(){
     return this.adjacencyList.size;
+  }
+
+  breadthFirst(node){
+    
   }
 }
 
