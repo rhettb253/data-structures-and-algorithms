@@ -23,4 +23,12 @@ describe("graph implementation", () => {
     const e1 = myGraph.addEdge(v1,v2,10);
     expect(e1.weight).toEqual(10);
   });
+
+  test("we can traverse the graph", () => {
+    const myGraph = new Graph();
+    const v1 = myGraph.addVertex(3);
+    const v2 = myGraph.addVertex(5);
+    myGraph.addEdge(v1,v2,10);
+    expect(myGraph.breadthFirst(v1).length).toBe(2);
+  });
 });
