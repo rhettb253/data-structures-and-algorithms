@@ -33,6 +33,7 @@ class Graph {
     let edges = this.adjacencyList.get(start);
     const newEdge = new Edge(start, end, weight);
     edges.push(newEdge);
+    this.adjacencyList.set(start, edges);
     return newEdge;
   }
 
@@ -56,9 +57,7 @@ class Graph {
   }
 
   getEdges(vertex) {
-    return this.adjacencyList.get(vertex)
-      ? this.adjacencyList.get(vertex)
-      : null;
+    return this.adjacencyList.get(vertex) ? this.adjacencyList.get(vertex): null;
   }
 
   size() {
@@ -75,6 +74,8 @@ class Graph {
       let dequeuedNode = queue.dequeue(); // dequeue front node
       ansArr.push(dequeuedNode); // add node to answer array
       visitedVertex.set(dequeuedNode, true);
+      console.log(dequeuedNode);
+      console.log(this.getEdges(dequeuedNode));
       let allNeighbors = this.getNeighbors(dequeuedNode); // get nodes neighbors
       console.log(allNeighbors);
       let neighborsToAdd = [];
