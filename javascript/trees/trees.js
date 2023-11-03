@@ -82,12 +82,6 @@ class BinaryTree {
     // and return the maximum of the three values
     return Math.max(node.value, leftMax, rightMax);
   }
-
-  // getMax() {
-  //   let nodeValues = this.preOrder(this.root);
-  //   nodeValues.sort((a, b) => b - a);
-  //   return nodeValues[0];
-  // }
 }
 
 class BinarySearchTree extends BinaryTree {
