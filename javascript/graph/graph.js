@@ -1,4 +1,5 @@
 const { Queue } = require("../stack-and-queue");
+const { Stack } = require('../stack-and-queue');
 
 class Node {
   constructor(value) {
@@ -91,6 +92,23 @@ class Graph {
       }
     }
     return ansArr;
+  }
+
+  depthFirst(Vertex){
+    let stack = new Stack();
+    stack.push(Vertex);
+    let ansArr = [];
+    while (!stack.isEmpty()){
+      let poppedVertex = stack.pop();
+      ansArr.push(poppedVertex);
+      if (this.getNeighbors(poppedVertex).length > 0) {
+        let neighbors = this.getNeighbors(poppedVertex);
+        for (let i = 0; i < neighbors.length; i++){
+          stack.push(neighbors[i]);
+        }
+      }
+      return ansArr;
+    }
   }
 }
 
